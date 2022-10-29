@@ -69,7 +69,8 @@ function RestaurantPage() {
   let getRestaurantDetailsById = async (id) => {
     try {
       let { data } = await axios.get(
-        "http://localhost:4008/api/get-restaurant-by-id/" + id
+        "https://cit-batch-09-april-api.herokuapp.com/api/get-restaurant-by-id/" +
+          id
       );
       setRestaurant({ ...data.result });
     } catch (error) {
@@ -79,7 +80,7 @@ function RestaurantPage() {
   let getMenuList = async () => {
     try {
       let { data } = await axios.get(
-        "http://localhost:4008/api/get-menu-item/" + id
+        "https://cit-batch-09-april-api.herokuapp.com/api/get-menu-item/" + id
       );
       setMenuItems([...data.result]);
     } catch (error) {
@@ -119,9 +120,12 @@ function RestaurantPage() {
       return false;
     }
 
-    let { data } = await axios.post("http://localhost:4008/api/get-order-id", {
-      amount: finalPrice,
-    });
+    let { data } = await axios.post(
+      "https://cit-batch-09-april-api.herokuapp.com/api/get-order-id",
+      {
+        amount: finalPrice,
+      }
+    );
     if (data.status === false) {
       alert("Oops, unable to create order, try again");
       return false;
@@ -144,7 +148,7 @@ function RestaurantPage() {
           razorpay_signature: response.razorpay_signature,
         };
         let { data } = await axios.post(
-          "http://localhost:4008/api/verify-payment",
+          "https://cit-batch-09-april-api.herokuapp.com/api/verify-payment",
           sendData
         );
         if (data.status === true) {

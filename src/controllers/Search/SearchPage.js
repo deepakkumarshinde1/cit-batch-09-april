@@ -10,12 +10,12 @@ function SearchPage() {
   let [searchData, setSearchData] = useState([]);
   let [locList, setLocList] = useState([]);
   let getFilterData = async (filterData) => {
-    let URL = "http://localhost:4008/api/filter";
+    let URL = "https://cit-batch-09-april-api.herokuapp.com/api/filter";
     let { data } = await axios.post(URL, filterData);
     setSearchData([...data.newResult]);
   };
   let getLocationList = async (filterData) => {
-    let URL = "http://localhost:4008/api/get-location";
+    let URL = "https://cit-batch-09-april-api.herokuapp.com/api/get-location";
     let { data } = await axios.get(URL);
 
     setLocList([...data.location]);

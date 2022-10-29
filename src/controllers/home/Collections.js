@@ -7,7 +7,8 @@ function Collections() {
   let [collectionList, setCollectionList] = useState([]);
   let getCollectionList = async () => {
     try {
-      let URL = "http://localhost:4008/api/get-collection-types";
+      let URL =
+        "https://cit-batch-09-april-api.herokuapp.com/api/get-collection-types";
       let { data } = await axios.get(URL);
       if (data.status === true) {
         setCollectionList([...data.collection_type]);
